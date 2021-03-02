@@ -1,0 +1,140 @@
+:root {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+	--hue: 0;
+	--lightness: 50;
+	--saturation: 80;
+
+    --height-xs: 0.5rem;
+
+    --spacing-xs: 0.2rem;
+    --spacing-md: 0.5rem;
+    --spacing-lg: 1rem;
+    --spacing-xlg: 3rem;
+    --spacing-xxlg: 4rem;
+
+    --text-xs: 0.75rem;
+}
+
+* {		
+	--color: hsl(
+		calc(var(--hue) + var(--hue-rotate, 0)), 
+		calc(var(--saturation) * (1 -  var(--desaturate, 0)) * 1%), 
+		calc(var(--lightness) * (1 - var(--darken, 0)) * 1%)
+	);
+}
+
+#app {
+  margin-top: var(--spacing-xlg);
+}
+
+
+.container { 
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+
+.column {
+    --columns: 12;
+    --width: 0;
+    column-gap: 5rem;
+    flex-basis: calc(var(--width) / var(--columns) * 100%);
+}
+
+
+@media (min-width: 576px) {
+	.content {
+		--width: 9;
+	}
+	
+	.sidebar {
+		--width: 4;
+	}
+}
+
+.header {
+    --width: 12;
+    margin: var(--spacing-xs) 0px;
+}
+
+#hue {
+	margin: var(--spacing-md);
+    width: 70%;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    border-radius: 3rem;
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    border-radius: 3rem;
+    height: var(--height-xs);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, var(--color) 55%, rgb(202, 202, 202) 100%);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border-radius: 100%;
+    background-color: var(--color);
+    border: 1px solid white;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: -5px;
+}
+
+.lable {
+    font-size: var(--text-xs);
+    margin-left: var(--spacing-md);
+}
+
+.item {
+	flex-grow: 1;
+	height: 2.5rem;
+	border: none;
+	background: var(--color);
+    color: white;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.item-prev {
+	--darken: 0.2;
+}
+
+.item-main {
+	--darken: 0.3;
+}
+
+.item-next {
+	--darken: 0.4;
+}
+
+.content {
+    --width: 9;
+    margin: var(--spacing-xs) 0px;
+    background-color: rgb(226, 226, 226);
+}
+
+.sidebar {
+    --width: 3;
+    margin: var(--spacing-xs) 0px;
+    background-color:var(--color);
+    --darken: 0.05;
+}
+
+.footer {
+    --width: 12;
+    --darken: 0.7;
+    margin: var(--spacing-xs) 0px;
+    padding-top: var(--spacing-lg);
+    height: 2.3rem;
+    background: var(--color, cadetblue);
+    position:relative;
+    text-align: center;
+    color: white;
+}
